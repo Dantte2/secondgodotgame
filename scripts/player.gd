@@ -34,7 +34,7 @@ func _ready():
 	$SpriteHolder/attackhitbox.monitoring = false
 	$SpriteHolder/attackhitbox.monitorable = false
 	
-	# Connect hitbox signal (assuming it's not connected yet)
+	# Connect hitbox signal
 	$SpriteHolder/attackhitbox.connect("body_entered", Callable(self, "_on_attackhitbox_body_entered"))
 
 func _input(event):

@@ -570,9 +570,9 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_osgdo")
 animation = &"attack1"
 autoplay = "idle"
+frame = 7
 
 [node name="attackhitbox" type="Area2D" parent="SpriteHolder"]
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteHolder/attackhitbox"]
 position = Vector2(-73.5, -27.5)

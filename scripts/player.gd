@@ -36,6 +36,7 @@ func _ready():
 	
 	# Connect hitbox signal
 	$SpriteHolder/attackhitbox.connect("body_entered", Callable(self, "_on_attackhitbox_body_entered"))
+	z_index = 10
 
 func _input(event):
 	if event.is_action_pressed("attack"):
@@ -197,17 +198,33 @@ func update_facing_direction():
 
 # --- ANIMATION UPDATING ---
 func update_animation():
-	if state not in [PlayerState.ATTACK, PlayerState.DASH, PlayerState.DASH_ATTACK]:
-		match state:
-			PlayerState.IDLE:
-				if $SpriteHolder/AnimatedSprite2D.animation != "idle":
-					$SpriteHolder/AnimatedSprite2D.play("idle")
-			PlayerState.WALK:
-				if $SpriteHolder/AnimatedSprite2D.animation != "walk":
-					$SpriteHolder/AnimatedSprite2D.play("walk")
-			PlayerState.JUMP:
+	# Skip changing animation during attack or dash-attack
+	if state in [PlayerState.ATTACK, PlayerState.DASH_ATTACK]:
+		return
+
+	# Handle falling animation globally if in air and falling
+	if not is_on_floor() and velocity.y > 0:
+		if $SpriteHolder/AnimatedSprite2D.animation != "fall":
+			$SpriteHolder/AnimatedSprite2D.play("fall")
+		return  # Stop further animation logic when falling
+
+	match state:
+		PlayerState.IDLE:
+			if $SpriteHolder/AnimatedSprite2D.animation != "idle":
+				$SpriteHolder/AnimatedSprite2D.play("idle")
+
+		PlayerState.WALK:
+			if $SpriteHolder/AnimatedSprite2D.animation != "walk":
+				$SpriteHolder/AnimatedSprite2D.play("walk")
+
+		PlayerState.JUMP:
+			if velocity.y < 0:
 				if $SpriteHolder/AnimatedSprite2D.animation != "jump":
 					$SpriteHolder/AnimatedSprite2D.play("jump")
+
+		PlayerState.DASH:
+			if $SpriteHolder/AnimatedSprite2D.animation != "dash":
+				$SpriteHolder/AnimatedSprite2D.play("dash")
 
 # --- Flip attack hitbox position ---
 func flip_attack_hitbox():

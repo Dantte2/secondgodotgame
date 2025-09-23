@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://du7uqxvn70x0g"]
+[gd_scene load_steps=8 format=3 uid="uid://du7uqxvn70x0g"]
 
 [ext_resource type="PackedScene" uid="uid://co4p30i28ixco" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://rwica3chjlqa" path="res://assets/hud/healthbars_gemstones.png" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://p6enbhxdy8kp" path="res://scenes/slime.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cjjhu644773xs" path="res://scenes/boss.tscn" id="3_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
-size = Vector2(1153, 83)
+size = Vector2(2734, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sugp2"]
 atlas = ExtResource("2_0wfyh")
@@ -25,7 +26,7 @@ position = Vector2(171, 525)
 [node name="ground" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
-position = Vector2(580.5, 618)
+position = Vector2(1371, 618)
 shape = SubResource("RectangleShape2D_sgp6g")
 
 [node name="Hud" type="CanvasLayer" parent="."]
@@ -42,4 +43,8 @@ texture_progress = SubResource("AtlasTexture_jyhfs")
 
 [node name="boss" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(1041, 558)
+player_path = NodePath("../player")
+
+[node name="slime" parent="." instance=ExtResource("2_jyhfs")]
+position = Vector2(1901, 262)
 player_path = NodePath("../player")

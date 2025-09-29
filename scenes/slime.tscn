@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://p6enbhxdy8kp"]
+[gd_scene load_steps=45 format=3 uid="uid://p6enbhxdy8kp"]
 
 [ext_resource type="Texture2D" uid="uid://fg6j6op331mx" path="res://assets/enemies/purple_slime_NoReflection-Sheet.png" id="1_371uh"]
 [ext_resource type="Script" uid="uid://dvm4vaujceew3" path="res://scripts/slime.gd" id="1_p2gj0"]
@@ -309,8 +309,11 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2gj0"]
+size = Vector2(38, 71)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2gj0"]
-radius = 13.1529
+radius = 16.0
 
 [node name="slime" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_p2gj0")
@@ -318,17 +321,16 @@ script = ExtResource("1_p2gj0")
 [node name="spriteholder" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spriteholder"]
-position = Vector2(462, 299)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jn7vh")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="attackhitbox" type="Area2D" parent="spriteholder"]
-position = Vector2(481, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spriteholder/attackhitbox"]
+shape = SubResource("RectangleShape2D_p2gj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(494, 302)
+position = Vector2(32, 4)
 shape = SubResource("CircleShape2D_p2gj0")

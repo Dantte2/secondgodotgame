@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://du7uqxvn70x0g"]
+[gd_scene load_steps=9 format=3 uid="uid://du7uqxvn70x0g"]
 
 [ext_resource type="PackedScene" uid="uid://co4p30i28ixco" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://rwica3chjlqa" path="res://assets/hud/healthbars_gemstones.png" id="2_0wfyh"]
@@ -15,6 +15,10 @@ region = Rect2(13.9184, 266.96, 53.162, 9.12805)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyhfs"]
 atlas = ExtResource("2_0wfyh")
 region = Rect2(13.8919, 211.964, 53.1422, 9.07768)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyhfs"]
+radius = 14.0017
+height = 206.003
 
 [node name="main" type="Node2D"]
 
@@ -46,5 +50,13 @@ position = Vector2(1041, 558)
 player_path = NodePath("../player")
 
 [node name="slime" parent="." instance=ExtResource("2_jyhfs")]
-position = Vector2(1901, 262)
+position = Vector2(1902, 558)
 player_path = NodePath("../player")
+
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2(-275, 518)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(-48, 31)
+rotation = 1.57163
+shape = SubResource("CapsuleShape2D_jyhfs")

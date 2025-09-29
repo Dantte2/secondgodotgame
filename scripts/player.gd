@@ -3,10 +3,10 @@ extends CharacterBody2D
 # Movement constants
 const MOVE_SPEED = 400
 
-const GRAVITY = 1500  # stronger gravity for snappier fall
-const FALL_MULTIPLIER = 3.0  # faster fall speed
-const LOW_JUMP_MULTIPLIER = 4.0  # cut jump height if jump released early
-const JUMP_VELOCITY = -800  # stronger jump
+const GRAVITY = 1500  
+const FALL_MULTIPLIER = 3.0  
+const LOW_JUMP_MULTIPLIER = 4.0  
+const JUMP_VELOCITY = -800  
 
 #coyote time
 const COYOTE_TIME_MAX := 0.15

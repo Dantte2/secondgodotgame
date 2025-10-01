@@ -131,6 +131,7 @@ func _make_ai_decision():
 func _process_idle():
     _make_ai_decision()
 
+@warning_ignore("unused_parameter")
 func _process_walk(delta):
     var direction = sign(player.global_position.x - global_position.x)
     velocity.x = direction * speed
@@ -141,6 +142,7 @@ func _process_attack1():
     if not $SpriteHolder/AnimatedSprite2D.is_playing():
         _set_state(State.IDLE)
 
+@warning_ignore("unused_parameter")
 func _process_attack2(delta):
     var direction = sign(player.global_position.x - global_position.x)
     velocity.x = direction * speed * 2

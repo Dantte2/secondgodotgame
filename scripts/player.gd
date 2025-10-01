@@ -43,8 +43,7 @@ func play_double_jump_effect():
     var effect = $SpriteHolder/DoubleJumpEffect
     effect.show()
     effect.frame = 0
-    effect.play("double_jump")  # make sure the animation is named "jump"
-
+    effect.play("double_jump")  
 
 func _ready():
     $SpriteHolder/AnimatedSprite2D.animation = "idle"
@@ -63,7 +62,6 @@ func _ready():
     
     $SpriteHolder/DoubleJumpEffect.hide()
 
-    
     z_index = 10
 
 func _on_slash_animation_finished():
@@ -74,7 +72,7 @@ func _input(event):
         if state == PlayerState.ATTACK:
             if combo_window:
                 combo_buffered = true
-        elif state != PlayerState.DASH:  # can attack if not dashing
+        elif state != PlayerState.DASH:  
             start_attack(1)
     elif event.is_action_pressed("dash"):
         if can_dash and state not in [PlayerState.DASH, PlayerState.ATTACK]:
@@ -182,7 +180,6 @@ func _physics_process(delta):
             handle_dash(delta)
 
     update_animation()
-
 
 # --- MOVEMENT AND JUMP ---
 func handle_movement(delta):
